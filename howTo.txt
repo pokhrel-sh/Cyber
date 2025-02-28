@@ -1,0 +1,23 @@
+wordlist: 
+    Easter: https://github.com/danielmiessler/SecLists/blob/master/Passwords/xato-net-10-million-passwords-100000.txt
+    rockyou: https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+    
+Hashcat Github link (for rules):
+    https://github.com/hashcat/hashcat 
+
+
+1. Run against the wordlist for direct matches (rockyou)
+
+2. Best66.rule (words, rockyou, easter)
+    hashcat -m 500 -a 0 --username -O -w 3 -r rules/best66.rule shadow.txt easterlist.txt
+3. Dive 
+    hashcat -m 500 -a 0 --username -O -w 3 -r rules/dive.rule shadow.txt easterlist.txt
+
+
+
+After everything is done, run this command to save into cracked.txt
+    hashcat -m 500 --username --show shadow.txt > cracked.txt
+
+This should get you to atleast 40 passwords.
+
+Try different rules to get further.
